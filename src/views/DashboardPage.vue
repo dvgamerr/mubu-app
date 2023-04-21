@@ -3,5 +3,11 @@
 </script>
 
 <template>
-  <h2>Environment Settings</h2>
+  <section>
+    Dashboard
+  </section>
 </template>
+
+<style lang="scss" scoped>
+
+</style>

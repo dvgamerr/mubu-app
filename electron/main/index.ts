@@ -112,6 +112,9 @@ async function createWindow() {
     console.log('backend')
   })
 
+  ipcMain.handle('anypoint-client', async e => !!(await settings.get('anypoint')))
+
+
   if (app.isPackaged) {
     win.loadFile(indexHtml)
   } else {

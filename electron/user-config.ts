@@ -15,7 +15,7 @@ const userDefault: Global.UserSetting = {
   backgroundColor: '#252627',
   titlebar: {
     activeBackground: '#121314',
-    activeForeground: '#004fe9',
+    activeForeground: '#0176d3',
     inactiveBackground: '#18181a',
     inactiveForeground: '#8f8f8f',
   },
