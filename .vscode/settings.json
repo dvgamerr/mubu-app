@@ -1,6 +1,10 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.tsc.autoDetect": "off",
+  "emmet.includeLanguages": {
+    "javascript": "javascript",
+    "vue-html": "html"
+  },
   "json.schemas": [
     {
       "fileMatch": [
