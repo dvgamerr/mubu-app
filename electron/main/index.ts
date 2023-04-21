@@ -1,6 +1,11 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
-import { release } from 'node:os'
-import { join } from 'node:path'
+import { release, arch, platform } from 'os'
+import { join } from 'path'
+import { name } from '../../package.json'
+import { initilizeApp } from '../user-config'
+import settings from 'electron-settings'
+
+import { onWindowPositionEvent } from './event/settings'
 
 // The built directory structure
 //
@@ -14,9 +19,12 @@ import { join } from 'node:path'
 //
 process.env.DIST_ELECTRON = join(__dirname, '..')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
-process.env.PUBLIC = process.env.VITE_DEV_SERVER_URL
-  ? join(process.env.DIST_ELECTRON, '../public')
-  : process.env.DIST
+process.env.PUBLIC = app.isPackaged ? process.env.DIST : join(process.env.DIST_ELECTRON, '../public')
+
+// setInterval(() => {
+//   console.log('process:', process.cpuUsage())
+//   console.log('process:', process.memoryUsage())
+// }, 1000)
 
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith('6.1')) app.disableHardwareAcceleration()
@@ -41,25 +49,75 @@ const url = process.env.VITE_DEV_SERVER_URL
 const indexHtml = join(process.env.DIST, 'index.html')
 
 async function createWindow() {
+  const { config, user } = await initilizeApp()
+  const lasted: SettingPosition = settings.getSync('position') as any || {}
+
+  console.log('os:', {
+    arch: arch(),
+    platform: platform(),
+    release: release(),
+  })
+  console.log(' pos:', lasted)
+
   win = new BrowserWindow({
-    title: 'Main window',
+    title: name,
     icon: join(process.env.PUBLIC, 'favicon.ico'),
+    show: true,
+    movable: true,
+    resizable: true,
+    frame: false,
+    alwaysOnTop: false,
+    titleBarStyle: 'hidden',
+    backgroundColor: user.titlebar.activeBackground,
+    titleBarOverlay: {
+      color: user.titlebar.activeBackground,
+      symbolColor: user.titlebar.activeForeground,
+    },
+    autoHideMenuBar: true,
     webPreferences: {
       preload,
-      // Warning: Enable nodeIntegration and disable contextIsolation is not secure in production
-      // Consider using contextBridge.exposeInMainWorld
-      // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
       nodeIntegration: true,
       contextIsolation: false,
     },
+    minWidth: config.width,
+    minHeight: config.height,
+    width: lasted.width,
+    height: lasted.height,
+    x: lasted.x,
+    y: lasted.y,
+  })
+  if (lasted.maximized) win.maximize()
+
+  win.on('focus', () => {
+    win.setTitleBarOverlay({
+      color: user.titlebar.activeBackground,
+      symbolColor: user.titlebar.activeForeground,
+    })
+    win.webContents.executeJavaScript(`document.body.classList.remove('inactive')`)
+  })
+  win.on('blur', () => {
+    win.setTitleBarOverlay({
+      color: user.titlebar.inactiveBackground,
+      symbolColor: user.titlebar.inactiveForeground,
+    })
+    win.webContents.executeJavaScript(`document.body.classList.add('inactive')`)
   })
 
-  if (process.env.VITE_DEV_SERVER_URL) { // electron-vite-vue#298
+  win.on('unmaximize', onWindowPositionEvent(win))
+  win.on('maximize', onWindowPositionEvent(win))
+  win.on('moved', onWindowPositionEvent(win))
+
+  ipcMain.handle('init-config', initilizeApp)
+  ipcMain.handle('open-menu', () => {
+    console.log('backend')
+  })
+
+  if (app.isPackaged) {
+    win.loadFile(indexHtml)
+  } else {
     win.loadURL(url)
     // Open devTool if the app is not packaged
     win.webContents.openDevTools()
-  } else {
-    win.loadFile(indexHtml)
   }
 
   // Test actively push message to the Electron-Renderer
@@ -72,7 +130,6 @@ async function createWindow() {
     if (url.startsWith('https:')) shell.openExternal(url)
     return { action: 'deny' }
   })
-  // win.webContents.on('will-navigate', (event, url) => { }) #344
 }
 
 app.whenReady().then(createWindow)
@@ -99,19 +156,18 @@ app.on('activate', () => {
   }
 })
 
-// New window example arg: new windows url
-ipcMain.handle('open-win', (_, arg) => {
+// new window example arg: new windows url
+ipcMain.handle('open-win', (event, arg) => {
   const childWindow = new BrowserWindow({
     webPreferences: {
       preload,
-      nodeIntegration: true,
-      contextIsolation: false,
     },
   })
 
-  if (process.env.VITE_DEV_SERVER_URL) {
-    childWindow.loadURL(`${url}#${arg}`)
-  } else {
+  if (app.isPackaged) {
     childWindow.loadFile(indexHtml, { hash: arg })
+  } else {
+    childWindow.loadURL(`${url}/#${arg}`)
+    // childWindow.webContents.openDevTools({ mode: "undocked", activate: true })
   }
 })
