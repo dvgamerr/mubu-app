@@ -14,12 +14,12 @@
   "meta": {
     "_id": "wrkm_ed27d81ab560483f9587e84e9cd6c1a9",
     "created": 1682094020205,
-    "modified": 1682094685598,
+    "modified": 1682094998794,
     "parentId": "wrk_5b13e316942f43c2a980a209a8b7276e",
     "type": "WorkspaceMeta",
     "activeActivity": null,
     "activeEnvironmentId": "env_25bc0ab8678a46b386334b18f4db8e12",
-    "activeRequestId": "req_8214b57d3e82450aba165cf256498cdb"
+    "activeRequestId": "req_9f8ddc8b49d14c188cf09da94ec9d491"
   },
   "requests": [
     {
@@ -29,7 +29,7 @@
         "_id": "reqm_cc6b68fe1b7948a29328a4b6b834f8d1",
         "type": "RequestMeta",
         "parentId": "req_6827d1b252354c329cf895cc82d3ecd2",
-        "modified": 1682094685303,
+        "modified": 1682094985468,
         "created": 1682094123891,
         "previewMode": "friendly",
         "responseFilter": "",
@@ -37,7 +37,7 @@
         "activeResponseId": null,
         "savedRequestBody": {},
         "pinned": false,
-        "lastActive": 1682094685301,
+        "lastActive": 1682094985467,
         "downloadPath": null,
         "expandedAccordionKeys": {
           "OAuth2AdvancedOptions": false
@@ -47,9 +47,9 @@
         "_id": "req_6827d1b252354c329cf895cc82d3ecd2",
         "type": "Request",
         "parentId": "wrk_5b13e316942f43c2a980a209a8b7276e",
-        "modified": 1682094518189,
+        "modified": 1682094857918,
         "created": 1682094123841,
-        "url": "{{ _.url }}/api/organizations/cb2a4d97-b91a-47bb-9eb0-9a97b16ff2a5/environments",
+        "url": "{{ _.url }}/accounts/api/organizations/cb2a4d97-b91a-47bb-9eb0-9a97b16ff2a5/environments",
         "name": "organizations-environments",
         "description": "",
         "method": "GET",
@@ -89,7 +89,7 @@
         "_id": "reqm_9f9ea53a944f4053a2e4edf3aba2f9ff",
         "type": "RequestMeta",
         "parentId": "req_8214b57d3e82450aba165cf256498cdb",
-        "modified": 1682094685600,
+        "modified": 1682094985728,
         "created": 1682094448948,
         "previewMode": "friendly",
         "responseFilter": "",
@@ -97,7 +97,7 @@
         "activeResponseId": null,
         "savedRequestBody": {},
         "pinned": false,
-        "lastActive": 1682094685598,
+        "lastActive": 1682094985727,
         "downloadPath": null,
         "expandedAccordionKeys": {}
       },
@@ -105,9 +105,9 @@
         "_id": "req_8214b57d3e82450aba165cf256498cdb",
         "type": "Request",
         "parentId": "wrk_5b13e316942f43c2a980a209a8b7276e",
-        "modified": 1682094527220,
+        "modified": 1682094861785,
         "created": 1682094448936,
-        "url": "{{ _.url }}/api/me",
+        "url": "{{ _.url }}/accounts/api/me",
         "name": "account-me",
         "description": "",
         "method": "GET",
@@ -139,6 +139,156 @@
         "settingRebuildPath": true,
         "settingFollowRedirects": "global"
       }
+    },
+    {
+      "type": "request",
+      "id": "req_9f8ddc8b49d14c188cf09da94ec9d491",
+      "meta": {
+        "_id": "reqm_28e578a943564ddeb93e5f7911d56c60",
+        "type": "RequestMeta",
+        "parentId": "req_9f8ddc8b49d14c188cf09da94ec9d491",
+        "modified": 1682095018296,
+        "created": 1682094998802,
+        "previewMode": "friendly",
+        "responseFilter": "",
+        "responseFilterHistory": [],
+        "activeResponseId": null,
+        "savedRequestBody": {},
+        "pinned": false,
+        "lastActive": 1682094998800,
+        "downloadPath": null,
+        "expandedAccordionKeys": {}
+      },
+      "request": {
+        "_id": "req_9f8ddc8b49d14c188cf09da94ec9d491",
+        "type": "Request",
+        "parentId": "wrk_5b13e316942f43c2a980a209a8b7276e",
+        "modified": 1682095016093,
+        "created": 1682094998791,
+        "url": "{{ _.url }}/hybrid/api/v1/applications/13614594",
+        "name": "application-id",
+        "description": "",
+        "method": "GET",
+        "body": {
+          "mimeType": "application/json",
+          "text": ""
+        },
+        "parameters": [],
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "name": "X-ANYPNT-ENV-ID",
+            "value": "54304a93-046a-4553-8350-7caf05bd9609"
+          },
+          {
+            "name": "X-ANYPNT-ORG-ID",
+            "value": "cb2a4d97-b91a-47bb-9eb0-9a97b16ff2a5"
+          }
+        ],
+        "authentication": {
+          "type": "oauth2",
+          "grantType": "client_credentials",
+          "disabled": false,
+          "accessTokenUrl": "https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token",
+          "clientId": "{{ _.clientId}}",
+          "clientSecret": "{{ _.clientSecret }}"
+        },
+        "metaSortKey": -1682081717652,
+        "isPrivate": false,
+        "settingStoreCookies": true,
+        "settingSendCookies": true,
+        "settingDisableRenderRequestBody": false,
+        "settingEncodeUrl": true,
+        "settingRebuildPath": true,
+        "settingFollowRedirects": "global"
+      }
+    },
+    {
+      "type": "request",
+      "id": "req_bac750951e8d41cd833d9aa3cb07ed90",
+      "meta": {
+        "_id": "reqm_c6b9248f16c546af8849c0d63a1e4429",
+        "type": "RequestMeta",
+        "parentId": "req_bac750951e8d41cd833d9aa3cb07ed90",
+        "modified": 1682094985985,
+        "created": 1682094876642,
+        "previewMode": "friendly",
+        "responseFilter": "",
+        "responseFilterHistory": [],
+        "activeResponseId": null,
+        "savedRequestBody": {},
+        "pinned": false,
+        "lastActive": 1682094985984,
+        "downloadPath": null,
+        "expandedAccordionKeys": {}
+      },
+      "request": {
+        "_id": "req_bac750951e8d41cd833d9aa3cb07ed90",
+        "type": "Request",
+        "parentId": "wrk_5b13e316942f43c2a980a209a8b7276e",
+        "modified": 1682094960369,
+        "created": 1682094876631,
+        "url": "{{ _.url }}/hybrid/api/v1/applications",
+        "name": "applications",
+        "description": "",
+        "method": "GET",
+        "body": {
+          "mimeType": "application/json",
+          "text": ""
+        },
+        "parameters": [
+          {
+            "name": "sort",
+            "value": "timeCreated"
+          },
+          {
+            "name": "limit",
+            "value": "500"
+          },
+          {
+            "name": "offset",
+            "value": "0"
+          }
+        ],
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "id": "pair_2c3a85846d324162b75488c140a69565"
+          },
+          {
+            "id": "pair_2c67adb0ca934484a921d50550775275",
+            "name": "X-ANYPNT-ENV-ID",
+            "value": "31f9641a-3f43-4954-961d-fb4dcaa07e12",
+            "description": ""
+          },
+          {
+            "id": "pair_f2f6aef10a62495faaed7b5478ba6cbf",
+            "name": "X-ANYPNT-ORG-ID",
+            "value": "cb2a4d97-b91a-47bb-9eb0-9a97b16ff2a5",
+            "description": ""
+          }
+        ],
+        "authentication": {
+          "type": "oauth2",
+          "grantType": "client_credentials",
+          "disabled": false,
+          "accessTokenUrl": "https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token",
+          "clientId": "{{ _.clientId}}",
+          "clientSecret": "{{ _.clientSecret }}"
+        },
+        "metaSortKey": -1682081717702,
+        "isPrivate": false,
+        "settingStoreCookies": true,
+        "settingSendCookies": true,
+        "settingDisableRenderRequestBody": false,
+        "settingEncodeUrl": true,
+        "settingRebuildPath": true,
+        "settingFollowRedirects": "global"
+      }
     }
   ],
   "environments": [
@@ -159,11 +309,11 @@
       "_id": "env_25bc0ab8678a46b386334b18f4db8e12",
       "type": "Environment",
       "parentId": "env_1272ab6b52ba7c7d6f5dd1967beaf52e1e324b58",
-      "modified": 1682094502333,
+      "modified": 1682094855875,
       "created": 1682094039726,
       "name": "mulesoft",
       "data": {
-        "url": "https://anypoint.mulesoft.com/accounts/",
+        "url": "https://anypoint.mulesoft.com/",
         "clientId": "b31b3fd9480e45d88a0af98bbd44986b",
         "clientSecret": "C3191D05968B4995800967e2192d322B"
       },
