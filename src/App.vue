@@ -17,14 +17,15 @@ const resizable = ref('16em')
       </div>
     </div>
   </header>
-  <div class="panel d-grid">
-    <aside class="pane pane1">
-      asd
+  <div class="container-fluid">
+    <RouterView />
+    <!-- <aside class="pane pane1">
+
     </aside>
     <section class="resizer" role="presentation" />
     <section class="pane pane2 container-fluid">
       <RouterView />
-    </section>
+    </section> -->
   </div>
 </template>
 

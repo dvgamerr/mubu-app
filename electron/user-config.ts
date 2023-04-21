@@ -12,9 +12,9 @@ interface Configuration {
 
 const userDefault: Global.UserSetting = {
   textColor: '#e8e8e8',
-  backgroundColor: '#1c1c1f',
+  backgroundColor: '#252627',
   titlebar: {
-    activeBackground: '#1c1c1f',
+    activeBackground: '#121314',
     activeForeground: '#004fe9',
     inactiveBackground: '#18181a',
     inactiveForeground: '#8f8f8f',
