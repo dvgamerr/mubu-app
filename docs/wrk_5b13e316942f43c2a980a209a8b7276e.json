@@ -1,0 +1,193 @@
+{
+  "id": "wrk_5b13e316942f43c2a980a209a8b7276e",
+  "name": "anypoint-mulesoft",
+  "workspace": {
+    "_id": "wrk_5b13e316942f43c2a980a209a8b7276e",
+    "type": "Workspace",
+    "parentId": "proj_fd96334478e24e3895ff3f4b918afa82",
+    "modified": 1682094020201,
+    "created": 1682094020201,
+    "name": "anypoint-mulesoft",
+    "description": "",
+    "scope": "collection"
+  },
+  "meta": {
+    "_id": "wrkm_ed27d81ab560483f9587e84e9cd6c1a9",
+    "created": 1682094020205,
+    "modified": 1682094685598,
+    "parentId": "wrk_5b13e316942f43c2a980a209a8b7276e",
+    "type": "WorkspaceMeta",
+    "activeActivity": null,
+    "activeEnvironmentId": "env_25bc0ab8678a46b386334b18f4db8e12",
+    "activeRequestId": "req_8214b57d3e82450aba165cf256498cdb"
+  },
+  "requests": [
+    {
+      "type": "request",
+      "id": "req_6827d1b252354c329cf895cc82d3ecd2",
+      "meta": {
+        "_id": "reqm_cc6b68fe1b7948a29328a4b6b834f8d1",
+        "type": "RequestMeta",
+        "parentId": "req_6827d1b252354c329cf895cc82d3ecd2",
+        "modified": 1682094685303,
+        "created": 1682094123891,
+        "previewMode": "friendly",
+        "responseFilter": "",
+        "responseFilterHistory": [],
+        "activeResponseId": null,
+        "savedRequestBody": {},
+        "pinned": false,
+        "lastActive": 1682094685301,
+        "downloadPath": null,
+        "expandedAccordionKeys": {
+          "OAuth2AdvancedOptions": false
+        }
+      },
+      "request": {
+        "_id": "req_6827d1b252354c329cf895cc82d3ecd2",
+        "type": "Request",
+        "parentId": "wrk_5b13e316942f43c2a980a209a8b7276e",
+        "modified": 1682094518189,
+        "created": 1682094123841,
+        "url": "{{ _.url }}/api/organizations/cb2a4d97-b91a-47bb-9eb0-9a97b16ff2a5/environments",
+        "name": "organizations-environments",
+        "description": "",
+        "method": "GET",
+        "body": {
+          "mimeType": "application/json",
+          "text": ""
+        },
+        "parameters": [],
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "authentication": {
+          "type": "oauth2",
+          "grantType": "client_credentials",
+          "disabled": false,
+          "accessTokenUrl": "https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token",
+          "clientId": "{{ _.clientId}}",
+          "clientSecret": "{{ _.clientSecret }}"
+        },
+        "metaSortKey": -1682094123841,
+        "isPrivate": false,
+        "settingStoreCookies": true,
+        "settingSendCookies": true,
+        "settingDisableRenderRequestBody": false,
+        "settingEncodeUrl": true,
+        "settingRebuildPath": true,
+        "settingFollowRedirects": "global"
+      }
+    },
+    {
+      "type": "request",
+      "id": "req_8214b57d3e82450aba165cf256498cdb",
+      "meta": {
+        "_id": "reqm_9f9ea53a944f4053a2e4edf3aba2f9ff",
+        "type": "RequestMeta",
+        "parentId": "req_8214b57d3e82450aba165cf256498cdb",
+        "modified": 1682094685600,
+        "created": 1682094448948,
+        "previewMode": "friendly",
+        "responseFilter": "",
+        "responseFilterHistory": [],
+        "activeResponseId": null,
+        "savedRequestBody": {},
+        "pinned": false,
+        "lastActive": 1682094685598,
+        "downloadPath": null,
+        "expandedAccordionKeys": {}
+      },
+      "request": {
+        "_id": "req_8214b57d3e82450aba165cf256498cdb",
+        "type": "Request",
+        "parentId": "wrk_5b13e316942f43c2a980a209a8b7276e",
+        "modified": 1682094527220,
+        "created": 1682094448936,
+        "url": "{{ _.url }}/api/me",
+        "name": "account-me",
+        "description": "",
+        "method": "GET",
+        "body": {
+          "mimeType": "application/json",
+          "text": ""
+        },
+        "parameters": [],
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "authentication": {
+          "type": "oauth2",
+          "grantType": "client_credentials",
+          "disabled": false,
+          "accessTokenUrl": "https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token",
+          "clientId": "{{ _.clientId}}",
+          "clientSecret": "{{ _.clientSecret }}"
+        },
+        "metaSortKey": -1682081717752,
+        "isPrivate": false,
+        "settingStoreCookies": true,
+        "settingSendCookies": true,
+        "settingDisableRenderRequestBody": false,
+        "settingEncodeUrl": true,
+        "settingRebuildPath": true,
+        "settingFollowRedirects": "global"
+      }
+    }
+  ],
+  "environments": [
+    {
+      "_id": "env_1272ab6b52ba7c7d6f5dd1967beaf52e1e324b58",
+      "type": "Environment",
+      "parentId": "wrk_5b13e316942f43c2a980a209a8b7276e",
+      "modified": 1682094038184,
+      "created": 1682094020203,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": {},
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1682094020203
+    },
+    {
+      "_id": "env_25bc0ab8678a46b386334b18f4db8e12",
+      "type": "Environment",
+      "parentId": "env_1272ab6b52ba7c7d6f5dd1967beaf52e1e324b58",
+      "modified": 1682094502333,
+      "created": 1682094039726,
+      "name": "mulesoft",
+      "data": {
+        "url": "https://anypoint.mulesoft.com/accounts/",
+        "clientId": "b31b3fd9480e45d88a0af98bbd44986b",
+        "clientSecret": "C3191D05968B4995800967e2192d322B"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "url",
+          "clientId",
+          "clientSecret"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1682094039726
+    }
+  ],
+  "apiSpec": {
+    "_id": "spc_da4668d6060c475fa79f68958ddc4dcf",
+    "type": "ApiSpec",
+    "parentId": "wrk_5b13e316942f43c2a980a209a8b7276e",
+    "modified": 1682094020201,
+    "created": 1682094020201,
+    "fileName": "anypoint-mulesoft",
+    "contents": "",
+    "contentType": "yaml"
+  },
+  "unitTestSuites": []
+}
