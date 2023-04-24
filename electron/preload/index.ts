@@ -8,7 +8,7 @@ import { domReady, createPreloading } from './dom'
 
 domReady()
   .then(() => {
-    return ipcRenderer.invoke('init-config')
+    return ipcRenderer.invoke('INIT-CONFIG')
   })
   .then(({ user }: { user: Global.UserSetting }) => {
     const preload = createPreloading(user)

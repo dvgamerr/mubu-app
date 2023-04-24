@@ -4,7 +4,7 @@
 
 <template>
   <section>
-    Dashboard
+    <router-link to="/setup">Setup</router-link>
   </section>
 </template>
 

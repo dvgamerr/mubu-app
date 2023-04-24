@@ -17,10 +17,10 @@ const initMsg = async (msg: string) => {
   postMessage({ payload: 'init-msg', msg }, '*')
 }
 
-initMsg('Initialize Hades')
+initMsg('Initialize MuBu')
 console.time('Initialize')
 Promise.all([
-  ipcRenderer.invoke('init-config')
+  ipcRenderer.invoke('INIT-CONFIG')
 ]).then(([{ user }]) => {
     console.timeEnd('Initialize')
     console.log({ user })

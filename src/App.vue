@@ -1,14 +1,15 @@
 <script async setup lang="ts">
 // import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import settings from 'electron-settings'
 import { ipcRenderer } from 'electron'
 // import { version } from '../package.json'
 
 const router = useRouter()
 
-ipcRenderer.invoke('anypoint-client').then(foundClient => {
-  if (!foundClient) router.push('/setup')
+ipcRenderer.invoke('MUBU-TOKEN-CHECK').then(foundClient => {
+  if (!foundClient) return router.replace('/setup')
+}).then(() => {
+
 })
 
 // import UIDropdownItem from './components/ui/DropdownItem.vue'
@@ -40,32 +41,6 @@ ipcRenderer.invoke('anypoint-client').then(foundClient => {
 </template>
 
 <style lang="scss">
-body {
-  overflow: hidden;
-}
-
-main {
-  position: relative;
-
-  section {
-    &.hero {
-      position: relative;
-
-      &::before {
-        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFxJREFUeNpiYBgFwx8w4pVddD8ASPYDsQJU5AEQFzLEKW4g3UCIYetxyAbiMpQJj/v6yZHDZ6ACOXJM1I4UfAY+IEcOn4GF5MjhNhASi4FornmAL4ZHwUgBAAEGAMpZEc92tasSAAAAAElFTkSuQmCC);
-        background-size: .45em;
-        content: '';
-        height: 4000px;
-        opacity: .65;
-        position: absolute;
-        right: -2800px;
-        transform: rotate(35deg);
-        top: 0;
-        width: 4000px;
-      }
-    }
-  }
-}
 
 #app {
   > .title {
@@ -104,18 +79,47 @@ main {
             background-color: #ffffff1f;
           }
         }
-
-        > .logo-menu {
-          margin-right: 1em;
-          transform: scale(0.16) translateX(40px) translateY(-20px);
-        }
-
-        &.profile {
-          font-size: 0.94rem;
-          width: 2.4em;
-        }
       }
     }
   }
 }
+
+body {
+  overflow: hidden;
+}
+
+main {
+  position: relative;
+
+  section {
+    &.hero {
+      position: relative;
+
+      @keyframes moveUp {
+        from {
+          transform: rotate(35deg);
+        }
+        to {
+          transform: translateY(10px) translateX(-7px) rotate(35deg);
+        }
+      }
+
+      &::before {
+        animation: moveUp 1s linear;
+        animation-iteration-count: infinite;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFxJREFUeNpiYBgFwx8w4pVddD8ASPYDsQJU5AEQFzLEKW4g3UCIYetxyAbiMpQJj/v6yZHDZ6ACOXJM1I4UfAY+IEcOn4GF5MjhNhASi4FornmAL4ZHwUgBAAEGAMpZEc92tasSAAAAAElFTkSuQmCC);
+        background-size: .45em;
+        content: '';
+        height: 4000px;
+        opacity: .65;
+        position: absolute;
+        right: -2800px;
+        transform: rotate(35deg);
+        top: 0;
+        width: 4000px;
+      }
+    }
+  }
+}
+
 </style>
