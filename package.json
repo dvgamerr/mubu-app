@@ -46,6 +46,6 @@
     "electron-log": "^5.0.0-beta.22",
     "electron-settings": "^4.0.2",
     "gaxios": "^5.1.0",
-    "yaml": "^2.2.1"
+    "yaml": "^2.2.2"
   }
 }
