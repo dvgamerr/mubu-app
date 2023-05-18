@@ -51,7 +51,7 @@ const onAuthAnypointConfig = async () => {
     return
   }
   eventAuth.value = true
-  await ipcRenderer.invoke('MUBU-DOWNLOAD-ALL')
+  await ipcRenderer.invoke('MULESOFT-FETCH')
   router.replace('/')
 }
 

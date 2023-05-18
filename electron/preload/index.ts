@@ -12,13 +12,14 @@ domReady()
   })
   .then(({ user }: { user: Global.UserSetting }) => {
     const preload = createPreloading(user)
+    const loading = document.querySelector('#loading .text')
     window.onmessage = ({ data }: MessageEvent<{ payload: string; msg: string }>) => {
       switch (data.payload) {
         case 'remove':
           preload.remove()
           break
         case 'init-msg':
-          document.querySelector('#loading .text').textContent = data.msg
+          if (loading) loading.textContent = data.msg
           break
       }
     }

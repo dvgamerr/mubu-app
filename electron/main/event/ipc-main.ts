@@ -2,7 +2,7 @@ import { initilizeApp } from '../../user-config'
 import settings from 'electron-settings'
 import log from 'electron-log/renderer'
 
-import { reqOAuth } from './anypoint'
+import { getOAuth2, getAccountMe } from './anypoint'
 import { getCurrentUser } from './gocd'
 
 export interface AnypointToken {
@@ -35,9 +35,9 @@ export default {
       }
     })
 
-    const oauth = await reqOAuth()
-    log.verbose({ 'anypoint-oauth': oauth })
-    if (oauth.statusText !== 'OK') {
+    const token = await getAccountMe()
+    log.verbose({ 'anypoint-token': token })
+    if (!token) {
       await settings.unset('mubu-token')
       checkError.anypoint = true
     }
@@ -65,11 +65,8 @@ export default {
       return false
     }
   },
-  'MUBU-DOWNLOAD-ALL': async () => {
-    const oauth = await reqOAuth()
-    // access_token: '9582b0d5-a2b7-45bb-adb7-32b2d488a39f',
-    // expires_in: 2703,
-    // token_type: 'bearer'
-
+  'MULESOFT-FETCH': async () => {
+    const oauth = await getAccountMe()
+    await settings.set('mulesoft.account', oauth as any)
   }
 }

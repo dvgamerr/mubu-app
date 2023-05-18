@@ -20,20 +20,20 @@ const initMsg = async (msg: string) => {
 initMsg('Initialize MuBu')
 console.time('Initialize')
 Promise.all([
-  ipcRenderer.invoke('INIT-CONFIG')
+  ipcRenderer.invoke('INIT-CONFIG'),
+  ipcRenderer.invoke('MULESOFT-FETCH')
 ]).then(([{ user }]) => {
-    console.timeEnd('Initialize')
-    console.log({ user })
-    initMsg('Starting')
-    createApp(AppLayout)
-      .use(router)
-      .use(configGlobal(user))
-      .component('Fa', FontAwesomeIcon)
-      .mount('#app')
-      .$nextTick(() => {
-        postMessage({ payload: 'remove' }, '*')
-      })
+  console.timeEnd('Initialize')
+  initMsg('Starting')
+  createApp(AppLayout)
+    .use(router)
+    .use(configGlobal(user))
+    .component('Fa', FontAwesomeIcon)
+    .mount('#app')
+    .$nextTick(() => {
+      postMessage({ payload: 'remove' }, '*')
+    })
   })
-  .catch((ex: Error) => {
-    console.log(ex)
-  })
+.catch((ex: Error) => {
+  console.log(ex)
+})

@@ -6,10 +6,8 @@ import { ipcRenderer } from 'electron'
 
 const router = useRouter()
 
-ipcRenderer.invoke('MUBU-TOKEN-CHECK').then(foundClient => {
+ipcRenderer.invoke('MUBU-TOKEN-GET').then(foundClient => {
   if (!foundClient) return router.replace('/setup')
-}).then(() => {
-
 })
 
 // import UIDropdownItem from './components/ui/DropdownItem.vue'
