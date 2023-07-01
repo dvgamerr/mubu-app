@@ -46,7 +46,7 @@
     "dayjs": "^1.11.7",
     "electron-log": "^5.0.0-beta.24",
     "electron-settings": "^4.0.2",
-    "gaxios": "^5.1.0",
+    "gaxios": "^5.1.2",
     "yaml": "^2.3.1"
   }
 }
